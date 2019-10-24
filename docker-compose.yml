@@ -20,7 +20,7 @@ services:
       - net-mysql
       - net-redis
 
-  web:
+  nginx:
     container_name: nginx-web
     image: "nginx:${NGINX_VERSION}"
     ports:
