@@ -13,7 +13,7 @@
 可以自定义自己的`nginx`、 `mysql`、`php` 、 `redis`版本, 直接在`.env`配置就行
 
 ```
-  mv env.example .env
+  mv .env.example .env
   
   // 启动服务
   docker-compose up
