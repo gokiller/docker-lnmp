@@ -1,0 +1,5 @@
+/mysql
+.env
+.idea
+/nginx/conf/conf.d/*
+/nginx/conf/logs/*
