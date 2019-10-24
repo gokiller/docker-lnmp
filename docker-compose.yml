@@ -8,10 +8,10 @@ services:
         - PHP_VERSION=${PHP_VERSION}
         - COMPOSER_REPO=${COMPOSER_REPO}
     container_name: "phpfpm-web"
-    ports: 
-      - "9000:9000" 
-    volumes: 
-      - ../data/www:/usr/share/nginx/html
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./code:/usr/share/nginx/html
       - ./php/php.ini:/usr/local/etc/php/php.ini
     restart: always
     privileged: true
@@ -25,8 +25,8 @@ services:
     image: 'nginx'
     ports:
       - "${NGINX_PORT}:80"
-    volumes: 
-      - ../data/www:/usr/share/nginx/html:rw
+    volumes:
+      - ./code:/usr/share/nginx/html:rw
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf/conf.d:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
@@ -34,13 +34,13 @@ services:
       - php
     networks:
       - net-php
-        
-  mysql: 
+
+  mysql:
     container_name: "mysql-web"
     image: mysql:${MYSQL_VERSION}
-    ports: 
-      - "${MYSQL_PORT}:3306" 
-    volumes: 
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
