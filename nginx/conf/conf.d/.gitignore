@@ -1,2 +1,4 @@
+!default.conf
+!laravel.conf.example
 *
 !.gitignore
