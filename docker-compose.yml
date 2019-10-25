@@ -7,7 +7,7 @@ services:
       args:
         - PHP_VERSION=${PHP_VERSION}
         - COMPOSER_REPO=${COMPOSER_REPO}
-    container_name: php
+    container_name: php-web
     ports:
       - "9000:9000"
     volumes:
@@ -20,7 +20,7 @@ services:
       - backend
 
   nginx:
-    container_name: nginx
+    container_name: nginx-web
     image: "nginx:${NGINX_VERSION}"
     ports:
       - "${NGINX_PORT}:80"
@@ -36,7 +36,7 @@ services:
       - frontend
 
   mysql:
-    container_name: mysql
+    container_name: mysql-web
     image: mysql:${MYSQL_VERSION}
     ports:
       - "${MYSQL_PORT}:3306"
@@ -55,7 +55,7 @@ services:
       context: ./redis
       args:
         - REDIS_VERSION=${REDIS_VERSION}
-    container_name: redis
+    container_name: redis-web
     ports:
       - "${REDIS_PORT}:6379"
     volumes:
