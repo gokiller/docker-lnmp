@@ -69,6 +69,24 @@ services:
     privileged: true
     networks:
       - backend
+
+  mongo:
+    build:
+      context: ./mongo
+      args:
+        - MONGODB_VERSION=${MONGODB_VERSION}
+    ports:
+      - "${MONGODB_PORT}:27017"
+    container_name: mongo-web
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    restart: always
+    volumes:
+      - ./mongo/db:/data/db
+    networks:
+      - backend
+
 networks:
   frontend:
   backend:
