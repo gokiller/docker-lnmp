@@ -7,6 +7,7 @@ services:
       args:
         - PHP_VERSION=${PHP_VERSION}
         - COMPOSER_REPO=${COMPOSER_REPO}
+        - INSTALL_MONGO=${PHP_FPM_INSTALL_MONGO}
     container_name: php-web
     ports:
       - "9000:9000"
