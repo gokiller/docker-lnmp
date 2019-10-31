@@ -4,7 +4,7 @@
 
 ## 描述
 
-这是一个 Docker 多容器间协作互连的例子。使用的是最常见的 LNMP 的技术栈，既 `Nginx` + `PHP` + `MySQL` + `Redis`。
+这是一个 Docker 多容器间协作互连的例子。使用的是最常见的 LNMP 的技术栈，既 `Nginx` + `PHP` + `MySQL` + `Redis` + `MongoDB`。
 
 在这个例子中，我使用的是 Docker Compose，这样比较简洁，如果使用 `docker` 命令也可以做到同样的效果，当然，过程要相对繁琐一些。
 
@@ -14,9 +14,13 @@
 
 ```
   mv .env.example .env
-  
+  // 创建服务（仅第一次需要）
+  docker-compose build
+    
   // 启动服务
   docker-compose up
+  // 后台启动服务
+  docker-compose up -d
   // 停止服务
   docker-compose stop
   // 重启服务
@@ -25,7 +29,10 @@
   docker-compose down
 ```
 
-PS:若果修改了DockerFile则必须运行 `docker-compose build` 命令，再次运行`docker-composer up`启动
+PS:
+* 若果修改了DockerFile则必须运行 `docker-compose build` 命令，再次运行`docker-composer up`启动。
+* 对于window下安装mongo可能会报错的情况，建议去除docker-compose.yml文件中mongo的文件映射即可（volumes:- ./mongo/db:/data/db）
+* 如果本机想直接连接容器中的redis mongo等服务 记得连接的主机名为你本机的ip地址。
 
 ## 关于项目运行配置说明
 
