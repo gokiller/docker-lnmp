@@ -26,6 +26,8 @@ services:
     ports:
       - "${NGINX_PORT}:80"
       - "443:443"
+    environment:
+      TZ : 'Asia/Shanghai'
     volumes:
       - ${PROJECT_DIR}:${DOCKER_PROJECT_DIR}
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
